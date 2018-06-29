@@ -10,7 +10,7 @@ require 'vues/partials/jumbotron.php';
 
 //Display the result :
 echo "<div class='container'>";
- if(isset($_POST["search"]) && !empty($_POST["search"])){
+ if(!empty($_POST["search"])){
 
    $filter = trim(htmlspecialchars($_POST['search']));
    $results = $manager->getElements($filter);
@@ -35,7 +35,7 @@ echo "<div class='container'>";
    }
    else {
      $errorTitle = "Not Found...";
-     $errorMessage = "Sorry, nothing was found..";
+     $errorMessage = "Sorry, nothing was found for this search : \"" . $_POST["search"] . "\"";
      require 'vues/partials/error.php';
  }
  } else {
